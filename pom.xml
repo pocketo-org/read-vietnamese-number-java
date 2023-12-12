@@ -121,6 +121,19 @@
             <includeTestSourceDirectory>true</includeTestSourceDirectory>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+          <version>3.21.2</version>
+          <configuration>
+            <analysisCache>true</analysisCache>
+            <includeTests>true</includeTests>
+            <printFailingErrors>true</printFailingErrors>
+            <rulesets>
+              <ruleset>config/pocketo-ruleset.xml</ruleset>
+            </rulesets>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -143,6 +156,19 @@
           <execution>
             <goals>
               <goal>check</goal>
+            </goals>
+            <phase>verify</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+              <goal>cpd-check</goal>
             </goals>
             <phase>verify</phase>
           </execution>
